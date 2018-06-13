@@ -1,0 +1,51 @@
+.App {
+justify-content: center;
+}
+body{
+  background: #f2f2f2;
+}
+.avatar-style {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+  /* border-radius: 50%; */
+}
+.ul-style{
+  list-style: none;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 250px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background: white;
+  margin-top: 30px;
+}
+
+.title {
+  color: grey;
+  font-size: 14px;
+}
+
+
+.loadMoreButton {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color:#679bef;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.loadMoreButton:hover{
+  opacity: 0.7;
+}
+.additional-style{
+padding-bottom: 5px;
+}
