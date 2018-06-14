@@ -4,14 +4,11 @@ justify-content: center;
 body{
   background: #f2f2f2;
 }
-.avatar-style {
-  vertical-align: middle;
-  width: 100%;
-  height: auto;
-  /* border-radius: 50%; */
-}
 .ul-style{
   list-style: none;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
@@ -49,3 +46,4 @@ body{
 .additional-style{
 padding-bottom: 5px;
 }
+
