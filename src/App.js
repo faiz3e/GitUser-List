@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import DisplayList from './containers/DisplayList';
-
+import {SearchUrl} from './containers/SearchUrl';
+import Filter from './containers/Filters';
+import SearchBar from './containers/SearchBar';
 class App extends Component {
   constructor(props) {
     super(props)
@@ -13,17 +15,18 @@ class App extends Component {
     this.sortByEvent=this.sortByEvent.bind(this);
   }
   
-  showData = () => {
-    this.getUserData();
-  }
-
-  getUserData() {
+   getUserData() {
     this.state.nameToSearch ?
-      fetch(' https://api.github.com/search/users?q=' + this.state.nameToSearch)
+      fetch(url + this.state.nameToSearch)
         .then(response => response.json())
         .then(arrayData => this.setState({ arrayData }, function () {console.log("data>",this.state.arrayData)}))
         .catch(e => e)
     : console.log("enter some value") 
+    // var dataFromurl =  SearchUrl(url,this.state.nameToSearch);
+    //   console.log(dataFromurl,"datafrom url");
+    //   this.setState({
+    //     arrayData:dataFromurl
+    //   })
   }
 
   handleChange(event) {
@@ -45,27 +48,17 @@ class App extends Component {
 
   render() {
     const posts = this.state.arrayData.items;
+
     return (
       <div className="App">
-        <div>
-          <input type="text" name="nameToSearch" placeholder="Search" onChange={this.handleChange.bind(this)} />
-          <div>
-            <span>Filter &#x21C5;</span>
-
-            <select name="selectOptionFilter" value={this.state.selectOptionFilter.key} onChange={this.sortByEvent.bind(this)}>
-              <option value='{ "key":"login", "order":"asc"}'>Name &#8613;</option>
-              <option value='{ "key":"login", "order":"dec"}'>Name &#8615;</option>
-              <option value='{ "key":"score", "order":"asc"}'>Rank &#8613;</option>
-              <option value='{ "key":"score", "order":"dec"}'>Rank &#8615;</option>
-            </select><br />
-            <button onClick={() => this.showData()}>show data</button>
-          </div>
-        </div>
-        {posts && <DisplayList post={posts} arrayDataCount={this.state.arrayData.total_count} /> }
-
+          <SearchBar onChange={this.handleChange.bind(this)} onClick={() => this.getUserData()}/>
+          <Filter value ={this.state.selectOptionFilter.key}  onChange={this.sortByEvent.bind(this)}/>
+          {posts && <DisplayList post={posts} arrayDataCount={this.state.arrayData.total_count} /> }
       </div>
     );
   }
 }
 
+
 export default App;
+const url ='https://api.github.com/search/users?q=';
