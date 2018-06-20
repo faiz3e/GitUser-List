@@ -8,6 +8,14 @@ export default class DisplayList extends Component {
       additionalData: [],
     }
   }
+
+     // shouldComponentUpdate(nextProps,nextState){
+    // console.log("props1 ",nextProps.nameToSearch);
+    // console.log("props2 ",this.props.nameToSearch);
+    // console.log(nextProps.nameToSearch !== this.props.nameToSearch);
+    
+    // return nextProps.nameToSearch !== this.props.nameToSearch;
+    // }
   fetchMore(url) {
     fetch(url)
       .then(response => response.json())
@@ -26,6 +34,7 @@ export default class DisplayList extends Component {
     }
     this.setState({ storeClickId: postid })
   }
+
   render() {
     var posts = this.props.post;
     var arrayDataCount = this.props.arrayDataCount;
