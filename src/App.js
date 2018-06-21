@@ -4,6 +4,7 @@ import DisplayList from './containers/DisplayList';
 // import {SearchUrl} from './containers/SearchUrl';
 import Filter from './containers/Filters';
 import SearchBar from './containers/SearchBar';
+import Head from './hoc/Head'
 class App extends Component {
   constructor(props) {
     super(props)
@@ -16,8 +17,6 @@ class App extends Component {
   }
 
   getUserData() {
-    console.log("sholudCheck", this.state.sholudCheck);
-
     this.state.sholudCheck ?
       fetch(url + this.state.nameToSearch)
         .then(response => response.json())
@@ -51,9 +50,11 @@ class App extends Component {
     const posts = this.state.arrayData.items;
 
     return (
-      <div className="App">
-        <SearchBar onChange={this.handleChangeName.bind(this)} onClick={() => this.getUserData()} />
-        <Filter onChange={this.sortByEvent.bind(this)} />
+      <div>
+        <Head>
+          <SearchBar onChange={this.handleChangeName.bind(this)} onClick={() => this.getUserData()} />
+          <Filter onChange={this.sortByEvent.bind(this)} />
+        </Head>
         {posts && <DisplayList post={posts} arrayDataCount={this.state.arrayData.total_count} />}
       </div>
     );

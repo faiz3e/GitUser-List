@@ -1,0 +1,28 @@
+.header{
+    padding: 15px;
+    background: rgb(114, 114, 114);
+    color: white;
+
+}
+.header button,select {
+    background-color:white; /* Green */
+    border: none;
+    color: black;
+    padding: 5px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.header button:hover {
+    background-color: rgb(64, 205, 209); /* Green */
+    color: white;
+}

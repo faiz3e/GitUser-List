@@ -6,29 +6,33 @@ export default class DisplayList extends Component {
     this.state = {
       storeClickId: null,
       additionalData: [],
+      oldUrl: '',
     }
   }
 
-     // shouldComponentUpdate(nextProps,nextState){
-    // console.log("props1 ",nextProps.nameToSearch);
-    // console.log("props2 ",this.props.nameToSearch);
-    // console.log(nextProps.nameToSearch !== this.props.nameToSearch);
-    
-    // return nextProps.nameToSearch !== this.props.nameToSearch;
-    // }
-  fetchMore(url) {
-    fetch(url)
-      .then(response => response.json())
-      .then(additionalData => this.setState({ additionalData }, function () { console.log("additional data >>>", this.state.additionalData) }))
-      .catch(e => e)
+  // shouldComponentUpdate(nextProps,nextState){
+  // console.log("props1 ",nextProps.nameToSearch);
+  // console.log("props2 ",this.props.nameToSearch);
+  // console.log(nextProps.nameToSearch !== this.props.nameToSearch);
+
+  // return nextProps.nameToSearch !== this.props.nameToSearch;
+  // }
+  fetchMore(newurl) {
+    if (newurl !== this.state.oldUrl)
+      fetch(newurl)
+        .then(response => response.json())
+        .then(additionalData => this.setState({ additionalData }, function () { console.log("additional data >>>", this.state.additionalData) }))
+        .then(this.setState({ oldUrl: newurl }))
+        .catch(e => e)
+    else {
+      console.log("same card clicked we dont need to fetch!!");
+    }
   }
 
   showmore(id, url) {
     var postid = id;
     if (this.state.storeClickId !== postid) {
       this.fetchMore(url);
-      console.log(postid, "postid");
-
     } else {
       postid = "";
     }
@@ -58,7 +62,7 @@ export default class DisplayList extends Component {
               {/* show more button */}
               {this.state.storeClickId === post.id ?
                 <div>
-                  <button className="w3-button w3-block buttoncolor"  onClick={this.showmore.bind(this, post.id, post.url)}>
+                  <button className="w3-button w3-block buttoncolor" onClick={this.showmore.bind(this, post.id, post.url)}>
                     <span>Show less</span>
                   </button>
                   <MoredataShow additionalData={this.state.additionalData} />
@@ -68,10 +72,6 @@ export default class DisplayList extends Component {
                   <span>Show more</span>
                 </button>
               }
-
-
-
-
             </li>)}
         </ul>}
       </div>

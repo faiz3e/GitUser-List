@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,Fragment } from 'react';
 export default class SearchBar extends Component {
 
     // shouldComponentUpdate(nextProps,nextState){
@@ -17,18 +17,21 @@ export default class SearchBar extends Component {
 // }
 //     componentDidUpdate(){console.log("componentDidUpdate");
 // }
-//     componentDidMount(){console.log("componentDidMount");
-// }
+    componentDidMount(){
+        this.inputElement.focus();
+}
     
     
     render() {
     // console.log(this.nextState,"search bar render");
     
         return (
-            <div>
-               <input type="text" name="nameToSearch" placeholder="Search" onChange={this.props.onChange} />
+            <Fragment>
+               <input type="text" name="nameToSearch" placeholder="Search Git Users" onChange={this.props.onChange} 
+               ref={(inpfocus)=>{this.inputElement=inpfocus}}
+               />
                 <button onClick={this.props.onClick}>show data</button>
-            </div>
+            </Fragment>
         );
     }
 }
