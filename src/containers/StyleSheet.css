@@ -1,0 +1,9 @@
+.li-style{
+    width: 100% !important;
+}
+@media screen and (min-width: 550px) {
+    .li-style{
+        width: 60% !important;
+    }
+
+    }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MoredataShow from './MoredataShow';
+import './StyleSheet.css';
 export default class DisplayList extends Component {
   constructor(props) {
     super(props)
