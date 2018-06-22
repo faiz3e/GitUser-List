@@ -1,0 +1,25 @@
+.li-style{
+    width: 100% !important;
+    margin: 30px;
+}
+@media screen and (min-width: 550px) {
+    .li-style{
+        width: 30% !important;
+        margin: 20px;
+    }
+
+    }
+.grid{
+    display: flex;
+    /* flex-direction: row; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* padding: 46px; */
+    list-style: none;
+}
+.list{
+    list-style: none;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

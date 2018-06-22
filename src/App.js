@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import DisplayList from './containers/DisplayList';
-// import {SearchUrl} from './containers/SearchUrl';
-import Filter from './containers/Filters';
-import SearchBar from './containers/SearchBar';
+import DisplayList from './components/DisplayList';
+// import {SearchUrl} from './components/SearchUrl';
+import Filter from './components/Filters';
+import SearchBar from './components/SearchBar';
 import Head from './hoc/Head'
 class App extends Component {
   constructor(props) {
@@ -27,9 +27,11 @@ class App extends Component {
   }
 
   handleChangeName(event) {
-    var shdchk = true;
-    if (this.state.nameToSearch === event.target.value) { shdchk = false }
-    this.setState({ nameToSearch: event.target.value, sholudCheck: shdchk })
+    var shdchk = false;
+    if (this.state.nameToSearch !== event.target.value && event.target.value !== '') {
+      shdchk = true
+      this.setState({ nameToSearch: event.target.value, sholudCheck: shdchk })
+    }
   }
 
 
